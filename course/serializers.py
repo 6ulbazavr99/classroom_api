@@ -13,3 +13,9 @@ class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = '__all__'
+
+
+# from django_filters import rest_framework as filters
+
+# class ProductFilter(filters.FilterSet):
+#
