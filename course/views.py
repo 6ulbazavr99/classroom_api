@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from account.permissions import SecondLevelPermission, FirstLevelPermission, ThirdLevelPermission
 from course import serializers
 from course.models import Subject, Course
+from course.serializers import SubjectSerializer
 from feedback.serializers import ReviewSerializer, LikeUserSerializer
 
 
@@ -28,9 +29,23 @@ class CourseViewSet(viewsets.ModelViewSet):
     # http://127.0.0.1:8000/api/v1/course/id/like/
     @action(['GET'], detail=True)
     def like(self, request, pk):
-        post = self.get_object()
-        likes = post.likes.all()
+        course = self.get_object()
+        likes = course.likes.all()
         serializer = LikeUserSerializer(instance=likes, many=True)
+        return Response(serializer.data, status=200)
+
+    @action(['GET'], detail=True)
+    def subjects(self, request, pk=None):
+        course = self.get_object()
+        subjects = course.subjects.all()
+        serializer = SubjectSerializer(instance=subjects, many=True)
+        return Response(serializer.data, status=200)
+
+    @action(['GET'], detail=True)
+    def requirements(self, request, pk=None):
+        course = self.get_object()
+        requirements = course.requirements.all()
+        serializer = SubjectSerializer(instance=requirements, many=True)
         return Response(serializer.data, status=200)
 
 
