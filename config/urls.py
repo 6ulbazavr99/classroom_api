@@ -10,7 +10,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="classroom_api",
       default_version='v1',
-      description="test classroom_api",
+      description="classroom_api.v1",
       terms_of_service="https://youtu.be/xm3YgoEiEDc?si=THLqoDDzw8gu3dnV",
       contact=openapi.Contact(email="contact@snippets.local"),
       license=openapi.License(name="BSD License"),
@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('api/v1/course/', include('course.urls')),
 
-    # path('api/v1/feedback/', include('feedback.urls')),
+    path('api/v1/feedback/', include('feedback.urls')),
 
 ]
 
