@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.database architecture.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': de_config('DB_NAME'),
         'USER': de_config('DB_USER'),
         'PASSWORD': de_config('DB_PASSWORD'),
@@ -140,7 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.database architecture.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.CustomUser'
 
