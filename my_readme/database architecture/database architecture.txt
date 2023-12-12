@@ -1,0 +1,59 @@
+// account.app //
+Table CustomUser {
+  id int
+  email email
+  avatar img
+  role int [ref: - Role.id]
+  first_name varchar
+  last_name varchar
+}
+
+Table Role {
+  id int
+  title varchar
+  access_level int
+}
+
+
+
+// course.app //
+Table Course {
+  id int
+  title varchar
+  subjects int [ref: < Subject.id]
+  requirements int [ref: < Subject.id]
+  description text
+}
+
+Table Subject {
+  id int
+  title varchar
+  description text
+}
+
+
+
+// feedback.app //
+Table Review {
+  id int
+  owner int [ref: - CustomUser.id]
+  course int [ref: < Course.id]
+  body text
+}
+
+Table Like {
+  id int
+  owner int [ref: - CustomUser.id]
+  course int [ref: < Course.id]
+}
+
+
+
+// group.app //
+Table Group {
+  id int
+  title varchar
+  students int [ref: < CustomUser.id]
+  mentor int [ref: - CustomUser.id]
+  course int [ref: - CustomUser.id]
+}
