@@ -23,3 +23,17 @@ class Like(models.Model):
 
     class Meta:
         unique_together = ['owner', 'course']
+
+
+class Rating(models.Model):
+    RATING_CHOICES = ((1, 'Too bad!'), (2, 'Bad!'),
+                      (3, 'Normal!'), (4, 'Good!'),
+                      (5, 'Excellent!'))
+    product = models.ForeignKey(Course, related_name='ratings', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='ratings', on_delete=models.CASCADE)
+    rating = models.PositiveSmallIntegerField(choices=RATING_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['owner', 'product']
+

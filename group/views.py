@@ -10,7 +10,6 @@ from .serializers import GroupSerializer
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    filter_backends = [DjangoFilterBackend]
     filterset_class = GroupModelFilter
 
     def get_permissions(self):

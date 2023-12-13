@@ -47,6 +47,15 @@ Table Like {
   course int [ref: < Course.id]
 }
 
+Table Rating {
+  id int
+  owner int [ref: - CustomUser.id]
+  product int [ref: < Course.id]
+  rating int
+  created_at datetime
+
+}
+
 
 
 // group.app //

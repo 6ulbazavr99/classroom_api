@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Review, Like
+from .models import Review, Like, Rating
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -35,3 +35,11 @@ class LikeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('You already liked this course!')
         return attrs
 
+
+class RatingSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.email')
+    product = serializers.ReadOnlyField(source='product.title')
+
+    class Meta:
+        model = Rating
+        fields = '__all__'
